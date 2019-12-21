@@ -1,1 +1,3 @@
-<n-like>123</n-like>
+<n-episode index="{{classic.index}}"></n-episode>
+<n-like bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"></n-like>
+<n-movie img="{{classic.image}}" content="{{classic.content}}"></n-movie>

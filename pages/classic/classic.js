@@ -1,17 +1,29 @@
+import { Classic } from "../../api/classic"
+import { Like } from "../../api/like"
+
+const classic = new Classic()
+const like = new Like()
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-
-  },
+  data: {},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    classic.getLatest((res) => {
+      this.setData({
+        classic: res
+      })
+    })
+  },
 
+  onLike (e) {
+    let behavior = e.detail.behavior
+    like.like(behavior, this.data.classic.id, this.data.classic.type)
   },
 
   /**
