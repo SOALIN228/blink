@@ -1,4 +1,3 @@
-// pages/classic/classic.js
 Page({
 
   /**
