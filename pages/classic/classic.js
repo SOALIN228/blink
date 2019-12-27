@@ -8,7 +8,11 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    classic: null,
+    latest: true,
+    first: false
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -24,6 +28,25 @@ Page({
   onLike (e) {
     let behavior = e.detail.behavior
     like.like(behavior, this.data.classic.id, this.data.classic.type)
+  },
+
+  onNext () {
+    this._updateClassic('next')
+  },
+
+  onPrevious () {
+    this._updateClassic('previous')
+  },
+
+  _updateClassic (nextOrPrevious) {
+    const index = this.data.classic.index
+    classic.getClassic(index, nextOrPrevious, (res) => {
+      this.setData({
+        classic: res,
+        latest: classic.isLatest(res.index),
+        first: classic.isFirst(res.index)
+      })
+    })
   },
 
   /**

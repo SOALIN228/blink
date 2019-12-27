@@ -10,7 +10,11 @@ Component({
   /**
    * 组件的初始数据
    */
-  data: {},
+  data: {
+    playing: false,
+    waittingUrl: 'images/player@waitting.png',
+    playingUrl: 'images/player@playing.png'
+  },
 
   /**
    * 组件的方法列表
