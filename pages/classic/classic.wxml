@@ -1,9 +1,13 @@
 <view class="container">
   <view class="header">
     <n-episode class="episode" index="{{classic.index}}"></n-episode>
-    <n-like class="like" bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"></n-like>
+    <n-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"></n-like>
   </view>
-  <n-movie img="{{classic.image}}" content="{{classic.content}}"></n-movie>
+  <n-movie hidden="{{classic.type!=100}}" img="{{classic.image}}" content="{{classic.content}}"></n-movie>
+  <n-music wx:if="{{classic.type==200}}" img="{{classic.image}}" content="{{classic.content}}"
+           title="{{classic.title}}" src="{{classic.url}}"
+  ></n-music>
+  <n-essay hidden="{{classic.type!=300}}" img="{{classic.image}}" content="{{classic.content}}"></n-essay>
   <n-navi class="navi" latest="{{latest}}" first="{{first}}" catch:left="onNext" catch:right="onPrevious"
           title="{{classic.title}}"></n-navi>
 </view>

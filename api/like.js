@@ -18,6 +18,19 @@ class Like extends Http {
       }
     })
   }
+
+  /**
+   * 获取点赞信息
+   * @param category 点赞类型
+   * @param artID 点赞id
+   * @param sCallback 成功回调
+   */
+  getClassicLikeStatus (category, artID, sCallback) {
+    this.request({
+      url: 'classic/' + category + '/' + artID + '/favor',
+      success: sCallback
+    })
+  }
 }
 
 export { Like }

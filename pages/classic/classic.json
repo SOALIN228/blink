@@ -2,6 +2,8 @@
   "usingComponents": {
     "n-like": "../../components/like/index",
     "n-movie": "../../components/classic/movie/index",
+    "n-music": "../../components/classic/music/index",
+    "n-essay": "../../components/classic/essay/index",
     "n-episode": "../../components/episode/index",
     "n-navi": "../../components/navi/index"
   }

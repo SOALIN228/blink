@@ -11,16 +11,20 @@ Page({
   data: {
     classic: null,
     latest: true,
-    first: false
+    first: false,
+    likeCount: 0,
+    likeStatus: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad (options) {
     classic.getLatest((res) => {
       this.setData({
-        classic: res
+        classic: res,
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
       })
     })
   },
@@ -41,10 +45,20 @@ Page({
   _updateClassic (nextOrPrevious) {
     const index = this.data.classic.index
     classic.getClassic(index, nextOrPrevious, (res) => {
+      this._getLikeStatus(res.type, res.id)
       this.setData({
         classic: res,
         latest: classic.isLatest(res.index),
         first: classic.isFirst(res.index)
+      })
+    })
+  },
+
+  _getLikeStatus (category, artID) {
+    like.getClassicLikeStatus(category, artID, (res) => {
+      this.setData({
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
       })
     })
   },
