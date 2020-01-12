@@ -6,7 +6,7 @@ Component({
     index: {
       type: String,
       observer (newVal, oldVal, changedPath) {
-        let val = newVal.padStart(2, '0')
+        const val = newVal.padStart(2, '0')
         this.setData({
           _index: val
         })
@@ -32,9 +32,9 @@ Component({
    */
   lifetimes: {
     attached () {
-      let date = new Date()
-      let year = date.getFullYear()
-      let month = date.getMonth()
+      const date = new Date()
+      const year = date.getFullYear()
+      const month = date.getMonth()
 
       this.setData({
         year,

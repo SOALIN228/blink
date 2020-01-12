@@ -3,16 +3,16 @@ import { Http } from "../utils/http"
 class Classic extends Http {
   /**
    * 获取最新期刊
-   * @param sCallback 成功回调
    */
-  getLatest (sCallback) {
-    this.request({
-      url: 'classic/latest',
-      success: (res) => {
-        sCallback(res)
+  getLatest () {
+    return new Promise((resolve, reject) => {
+      this.request({
+        url: 'classic/latest'
+      }).then(res => {
         this._setLatestIndex(res.index)
         wx.setStorageSync(this._getKey(res.index), res)
-      }
+        resolve(res)
+      })
     })
   }
 
@@ -20,23 +20,23 @@ class Classic extends Http {
    * 获取当前期刊上一期或下一期
    * @param index 期刊号
    * @param nextOrPrevious 执行上一期还是下一期
-   * @param sCallback 成功回调
    */
-  getClassic (index, nextOrPrevious, sCallback) {
-    let key = nextOrPrevious === 'next' ?
-      this._getKey(index + 1) : this._getKey(index - 1)
-    let classic = wx.getStorageSync(key)
-    if (!classic) {
-      this.request({
-        url: `classic/${index}/${nextOrPrevious}`,
-        success: (res) => {
-          sCallback(res)
+  getClassic (index, nextOrPrevious) {
+    return new Promise((resolve, reject) => {
+      const key = nextOrPrevious === 'next' ?
+        this._getKey(index + 1) : this._getKey(index - 1)
+      const classic = wx.getStorageSync(key)
+      if (!classic) {
+        this.request({
+          url: `classic/${index}/${nextOrPrevious}`
+        }).then(res => {
           wx.setStorageSync(this._getKey(res.index), res)
-        }
-      })
-    } else {
-      sCallback(classic)
-    }
+          resolve(res)
+        })
+      } else {
+        resolve(classic)
+      }
+    })
   }
 
   isFirst (index) {

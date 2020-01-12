@@ -21,7 +21,13 @@ const tips = {
 }
 
 class Http {
-  request ({ url, method = 'GET', data = {}, success = () => {} } = {}) {
+  request ({ url, method = 'GET', data = {} }) {
+    return new Promise((resolve, reject) => {
+      this._request(url, method, data, resolve, reject)
+    })
+  }
+
+  _request (url, method, data, resolve, reject) {
     wx.request({
       url: config.api_base_url + url,
       method,
@@ -31,15 +37,17 @@ class Http {
         'appkey': config.appkey
       },
       success: (res) => {
-        let code = res.statusCode.toString()
+        const code = res.statusCode.toString()
         if (code.startsWith('2')) {
-          success(res.data)
+          resolve(res.data)
         } else {
           this._show_error(res.data.error_code)
+          reject()
         }
       },
       fail: (err) => {
         this._show_error(1006)
+        reject(err)
       }
     })
   }

@@ -8,8 +8,8 @@ class Like extends Http {
    * @param category 点赞类型
    */
   like (behavior, artID, category) {
-    let url = behavior === 'like' ? 'like' : 'like/cancel'
-    this.request({
+    const url = behavior === 'like' ? 'like' : 'like/cancel'
+    return this.request({
       url,
       method: 'POST',
       data: {
@@ -23,12 +23,10 @@ class Like extends Http {
    * 获取点赞信息
    * @param category 点赞类型
    * @param artID 点赞id
-   * @param sCallback 成功回调
    */
-  getClassicLikeStatus (category, artID, sCallback) {
-    this.request({
-      url: 'classic/' + category + '/' + artID + '/favor',
-      success: sCallback
+  getClassicLikeStatus (category, artID) {
+    return this.request({
+      url: `classic/${category}/${artID}/favor`
     })
   }
 }
