@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "n-button": "/components/button/index",
+    "n-preview": "/components/preview/index"
+  }
 }

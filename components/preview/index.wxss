@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 330rpx;
+  background-color: #ffffff;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 80rpx;
+}
+
+.tag {
+  font-size: 24rpx;
+  width: 72rpx;
+  height: 40rpx;
+  margin-top: -2rpx;
+  margin-left: 20rpx;
+  background-color: #f7f7f7 !important;
+}
+
+.like {
+  margin-top: 4rpx;
+  margin-right: 4rpx;
+}
+
+.other-img {
+  width: 100%;
+  height: 240rpx;
+}
+
+.music-img {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 50%;
+}
+
+.text {
+  font-size: 28rpx;
+  overflow: hidden;
+  height: 130rpx;
+  padding: 30rpx;
+  color: #666666;
+}

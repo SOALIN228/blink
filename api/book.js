@@ -55,6 +55,30 @@ class Book extends Http {
       }
     })
   }
+
+  /**
+   * 书籍搜索
+   * @param start 起始值
+   * @param q 关键字
+   */
+  search (start, q) {
+    return this.request({
+      url: 'book/search?summary=1',
+      data: {
+        q: q,
+        start: start
+      }
+    })
+  }
+
+  /**
+   * 获取喜欢书籍数量
+   */
+  getMyBookCount () {
+    return this.request({
+      url: '/book/favor/count'
+    })
+  }
 }
 
 export { Book }

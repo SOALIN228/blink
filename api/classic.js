@@ -1,4 +1,4 @@
-import { Http } from "../utils/http"
+import { Http } from '../utils/http'
 
 class Classic extends Http {
   /**
@@ -36,6 +36,26 @@ class Classic extends Http {
       } else {
         resolve(classic)
       }
+    })
+  }
+
+  /**
+   * 获取我喜欢的期刊
+   */
+  getMyFavor () {
+    return this.request({
+      url: 'classic/favor'
+    })
+  }
+
+  /**
+   * 获取某一期详细信息
+   * @param cid id号
+   * @param type 类型号
+   */
+  getById (cid, type) {
+    return this.request({
+      url: `classic/${type}/${cid}`
     })
   }
 

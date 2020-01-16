@@ -1,7 +1,12 @@
 <view class="container">
   <view class="header">
     <n-episode class="episode" index="{{classic.index}}"></n-episode>
-    <n-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"></n-like>
+    <view class="like-container">
+      <n-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}"/>
+      <n-button class="share-btn" open-type="share">
+        <image class="share" slot="img" src="/images/icon/share.png"/>
+      </n-button>
+    </view>
   </view>
   <n-movie hidden="{{classic.type!=100}}" img="{{classic.image}}" content="{{classic.content}}"></n-movie>
   <n-music wx:if="{{classic.type==200}}" img="{{classic.image}}" content="{{classic.content}}"

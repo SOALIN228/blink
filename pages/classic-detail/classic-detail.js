@@ -1,40 +1,18 @@
-import { Book } from '../../api/book'
-import { random } from '../../utils/common'
-
-const book = new Book()
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    books: [],
-    searching: false,
-    more: ''
+    cid: Number,
+    type: Number
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad (options) {
-    book.getHotList().then(res => {
-      this.setData({
-        books: res
-      })
-    })
-  },
+  onLoad: function (options) {
 
-  onSearching () {
-    this.setData({
-      searching: true
-    })
-  },
-
-  onCancel () {
-    this.setData({
-      searching: false
-    })
   },
 
   /**
@@ -75,10 +53,8 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom () {
-    this.setData({
-      more: random(16)
-    })
+  onReachBottom: function () {
+
   },
 
   /**

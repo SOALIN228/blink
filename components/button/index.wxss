@@ -1,0 +1,6 @@
+.container {
+  width: auto !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  border: none !important;
+}

@@ -21,8 +21,26 @@
   margin-left: 20rpx;
 }
 
+.like-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 30rpx;
+}
+
 .like {
   margin-top: 6rpx;
+}
+
+.share-btn {
+  margin-top: 6rpx;
+  margin-left: 10rpx;
+}
+
+.share {
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .navi {

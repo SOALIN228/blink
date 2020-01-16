@@ -2,6 +2,7 @@
   "usingComponents": {
     "n-tag": "/components/tag/index",
     "n-like": "/components/like/index",
+    "n-button": "/components/button/index",
     "n-mask": "/components/mask/index"
   }
 }
